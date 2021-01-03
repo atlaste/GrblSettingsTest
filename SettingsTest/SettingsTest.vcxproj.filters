@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Configuration">
+      <UniqueIdentifier>{98728e35-81d0-48f3-9e33-2da7e6a03bc6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Configuration\Parser.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="Configuration\SettingsError.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="Configuration\Tokenizer.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="Configuration\TokenKind.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="Configuration\ParseException.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="Assert.h" />
+    <ClInclude Include="Machine.h" />
+    <ClInclude Include="Configuration\GenericFactory.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="Configuration\Configurable.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="Configuration\Generator.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="Pin.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Configuration\Tokenizer.cpp">
+      <Filter>Configuration</Filter>
+    </ClCompile>
+    <ClCompile Include="Configuration\Parser.cpp">
+      <Filter>Configuration</Filter>
+    </ClCompile>
+    <ClCompile Include="ParserTest.cpp" />
+    <ClCompile Include="Configuration\Generator.cpp">
+      <Filter>Configuration</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Test.yaml" />
+  </ItemGroup>
+</Project>
