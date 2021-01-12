@@ -128,7 +128,12 @@ public:
             tmp[0] = allAxis[a];
             tmp[1] = '\0';
 
-            handler.handle(tmp, axis_[a][1]);
+            if (handler.handlerType() == Configuration::HandlerType::Runtime || 
+                handler.handlerType() == Configuration::HandlerType::Parser)
+            {
+                // 'x' is a shorthand for 'x1', so we don't generate it.
+                handler.handle(tmp, axis_[a][1]);
+            }
 
             for (size_t g = 1; g <= MAX_NUMBER_GANGED; ++g)
             {

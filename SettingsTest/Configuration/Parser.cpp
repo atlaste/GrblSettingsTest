@@ -77,7 +77,7 @@ namespace Configuration {
         if (last == token_.indent_) {
             // Yes, the token continues where we left off:
             current_ = token_;
-            // Tokenize(); --> No need, this is handled by MoveNext!
+            Tokenize();
         } else {
             current_         = TokenData();
             current_.indent_ = last;
@@ -99,14 +99,14 @@ namespace Configuration {
     }
     
     int Parser::intValue() const {
-        if (current_.kind_ != TokenKind::Boolean) {
+        if (current_.kind_ != TokenKind::IntegerValue) {
             parseError("Expected an integer value (e.g. 123456)");
         }
         return current_.iValue_;
     }
     
     double Parser::doubleValue() const {
-        if (current_.kind_ != TokenKind::Boolean) {
+        if (current_.kind_ != TokenKind::FloatingPoint) {
             parseError("Expected a float value (e.g. 123.456)");
         }
         return current_.fValue_;

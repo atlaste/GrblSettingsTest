@@ -63,7 +63,7 @@ namespace Configuration {
                 for (auto it : instance().builders_) {
                     if (handler.matchesUninitialized(it->name())) {
                         inst = it->create();
-                        inst->handle(handler);
+                        handler.handle(it->name(), *inst);
 
                         return;
                     }

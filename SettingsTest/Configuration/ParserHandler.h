@@ -19,7 +19,7 @@ namespace Configuration
                 std::cout << "Parsing configurable " << name << std::endl;
 
                 parser_.enter();
-                while (parser_.moveNext()) {
+                for (; !parser_.isEndSection(); parser_.moveNext()) {
                     value->handle(*this);
                 }
                 parser_.leave();
@@ -29,8 +29,6 @@ namespace Configuration
         bool matchesUninitialized(const char* name) override {
             return parser_.is(name);
         }
-        
-        bool isBuilder() override { return true; }
 
     public:
         ParserHandler(Configuration::Parser& parser) : parser_(parser) {}
@@ -50,5 +48,8 @@ namespace Configuration
         void handle(const char* name, Pin& value) override {
             if (parser_.is(name)) { value = parser_.pinValue(); }
         }
+
+        HandlerType handlerType() override { return HandlerType::Parser; }
+
     };
 }

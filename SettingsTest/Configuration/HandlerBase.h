@@ -1,6 +1,8 @@
 #pragma once
 
 #include <string>
+
+#include "HandlerType.h"
 #include "../Pin.h"
 
 namespace Configuration
@@ -15,7 +17,6 @@ namespace Configuration
     protected:
         virtual void handleDetail(const char* name, Configurable* value) = 0;
         virtual bool matchesUninitialized(const char* name) = 0;
-        virtual bool isBuilder() = 0;
 
         template <typename BaseType>
         friend class GenericFactory;
@@ -26,9 +27,11 @@ namespace Configuration
         virtual void handle(const char* name, std::string& value) = 0;
         virtual void handle(const char* name, Pin& value) = 0;
 
+        virtual HandlerType handlerType() = 0;
+
         template <typename T>
         void handle(const char* name, T*& value) {
-            if (isBuilder())
+            if (handlerType() == HandlerType::Parser)
             {
                 if (value == nullptr && matchesUninitialized(name))
                 {
@@ -46,6 +49,6 @@ namespace Configuration
         }
 
         template <typename T>
-        void handle(const char* name, T& value) { handle(name, &value); }
+        void handle(const char* name, T& value) { handleDetail(name, &value); }
     };
 }

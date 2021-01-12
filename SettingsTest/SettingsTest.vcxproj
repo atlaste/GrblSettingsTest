@@ -24,6 +24,7 @@
     <ClInclude Include="Configuration\Generator.h" />
     <ClInclude Include="Configuration\GenericFactory.h" />
     <ClInclude Include="Configuration\HandlerBase.h" />
+    <ClInclude Include="Configuration\HandlerType.h" />
     <ClInclude Include="Configuration\ParseException.h" />
     <ClInclude Include="Configuration\Parser.h" />
     <ClInclude Include="Configuration\ParserHandler.h" />

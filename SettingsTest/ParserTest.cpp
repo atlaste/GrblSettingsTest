@@ -22,7 +22,7 @@ int main() {
         Configuration::ParserHandler handler(parser);
 
         Machine machine;
-        while (parser.moveNext())
+        for (; !parser.isEndSection(); parser.moveNext())
         {
             std::cout << "Parsing key " << parser.key() << std::endl;
             machine.handle(handler);

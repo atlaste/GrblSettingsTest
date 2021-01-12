@@ -38,7 +38,8 @@ namespace Configuration {
         void leave();
 
         inline bool is(const char* expected) const {
-            return !strncmp(expected, current_.keyStart_, size_t(current_.keyEnd_ - current_.keyStart_));
+            return current_.keyStart_ != nullptr && 
+                   !strncmp(expected, current_.keyStart_, size_t(current_.keyEnd_ - current_.keyStart_));
         }
 
         inline std::string key() const { return std::string(current_.keyStart_, current_.keyEnd_); }

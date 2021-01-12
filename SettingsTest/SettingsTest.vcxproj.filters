@@ -39,6 +39,9 @@
     <ClInclude Include="Configuration\ParserHandler.h">
       <Filter>Configuration</Filter>
     </ClInclude>
+    <ClInclude Include="Configuration\HandlerType.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Configuration\Tokenizer.cpp">
