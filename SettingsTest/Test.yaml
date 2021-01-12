@@ -6,7 +6,7 @@ i2so:
   ws: gpio.17
   data: gpio.21
 
-axis:
+axes:
   x:
       endstop: gpio.33:low
       stepstick:

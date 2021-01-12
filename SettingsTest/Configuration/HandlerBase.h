@@ -15,6 +15,7 @@ namespace Configuration
     protected:
         virtual void handleDetail(const char* name, Configurable* value) = 0;
         virtual bool matchesUninitialized(const char* name) = 0;
+        virtual bool isBuilder() = 0;
 
         template <typename BaseType>
         friend class GenericFactory;
@@ -27,12 +28,20 @@ namespace Configuration
 
         template <typename T>
         void handle(const char* name, T*& value) {
-            if (value == nullptr && matchesUninitialized(name))
+            if (isBuilder())
             {
-                value = new T();
+                if (value == nullptr && matchesUninitialized(name))
+                {
+                    std::cout << "Create " << typeid(T).name() << " for " << name << std::endl;
+
+                    value = new T();
+                    handleDetail(name, value);
+                }
             }
-            if (value != nullptr) {
-                handleDetail(name, value);
+            else {
+                if (value != nullptr) {
+                    handleDetail(name, value);
+                }
             }
         }
 

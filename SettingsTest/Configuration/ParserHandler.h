@@ -4,16 +4,20 @@
 #include "Parser.h"
 #include "Configurable.h"
 
+#include <iostream>
+
 namespace Configuration
 {
     class ParserHandler : public Configuration::HandlerBase
     {
     private:
-        Configuration::Parser parser_;
+        Configuration::Parser& parser_;
 
     protected:
         void handleDetail(const char* name, Configuration::Configurable* value) override {
             if (value != nullptr && parser_.is(name)) {
+                std::cout << "Parsing configurable " << name << std::endl;
+
                 parser_.enter();
                 while (parser_.moveNext()) {
                     value->handle(*this);
@@ -25,6 +29,8 @@ namespace Configuration
         bool matchesUninitialized(const char* name) override {
             return parser_.is(name);
         }
+        
+        bool isBuilder() override { return true; }
 
     public:
         ParserHandler(Configuration::Parser& parser) : parser_(parser) {}

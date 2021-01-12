@@ -46,6 +46,7 @@ namespace Configuration
     protected:
         void handleDetail(const char* name, Configurable* value) override;
         bool matchesUninitialized(const char* name) override { return false; }
+        bool isBuilder() override { return false; }
 
     public:
         Generator() = default;

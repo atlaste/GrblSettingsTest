@@ -24,6 +24,7 @@ int main() {
         Machine machine;
         while (parser.moveNext())
         {
+            std::cout << "Parsing key " << parser.key() << std::endl;
             machine.handle(handler);
         }
 

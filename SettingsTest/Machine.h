@@ -34,7 +34,7 @@ public:
         handler.handle("ws", ws_);
     }
 
-    const char* name() const override { return "i2so"; }
+    // const char* name() const override { return "i2so"; }
 
     ~I2SO() {}
 };
@@ -66,7 +66,7 @@ public:
         handler.handle("enable", enable_);
     }
 
-    const char* name() const override { return "stepstick"; }
+    // const char* name() const override { return "stepstick"; }
     // TODO FIXME: should be in a cpp file, and: return stepstickRegistration.name();
 };
 
@@ -90,23 +90,21 @@ public:
         MotorFactory::handle(handler, motor_);
     }
 
-    const char* name() const override { return "axis"; }
+    // const char* name() const override { return "axis"; }
 
     ~Axis() {
         delete motor_;
     }
 };
 
-class Machine : public Configuration::Configurable {
-private:
+class Axes : public Configuration::Configurable {
     static const int MAX_NUMBER_AXIS = 6;
     static const int MAX_NUMBER_GANGED = 2;
 
-    I2SO* i2so_ = nullptr;
     Axis* axis_[MAX_NUMBER_AXIS][MAX_NUMBER_GANGED + 1];
 
 public:
-    Machine() : axis_()
+    Axes() : axis_()
     {
         for (int i = 0; i < MAX_NUMBER_AXIS; ++i)
         {
@@ -138,14 +136,11 @@ public:
                 handler.handle(tmp, axis_[a][g]);
             }
         }
-
-        handler.handle("i2so", i2so_);
     }
 
-    const char* name() const override { return "machine"; }
+    // const char* name() const override { return "machine"; }
 
-    ~Machine() {
-        delete i2so_;
+    ~Axes() {
         for (int i = 0; i < MAX_NUMBER_AXIS; ++i)
         {
             for (int j = 0; j <= MAX_NUMBER_GANGED; ++j)
@@ -153,5 +148,28 @@ public:
                 delete axis_[i][j];
             }
         }
+    }
+};
+
+class Machine : public Configuration::Configurable {
+private:
+    I2SO* i2so_ = nullptr;
+    Axes* axes_ = nullptr;
+
+public:
+    Machine() = default;
+
+    void validate() const override { }
+
+    void handle(Configuration::HandlerBase& handler) override {
+        handler.handle("i2so", i2so_);
+        handler.handle("axes", axes_);
+    }
+
+    // const char* name() const override { return "machine"; }
+
+    ~Machine() {
+        delete i2so_;
+        delete axes_;
     }
 };
