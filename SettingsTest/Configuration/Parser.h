@@ -46,7 +46,7 @@ namespace Configuration {
         std::string stringValue() const;
         bool boolValue() const;
         int intValue() const;
-        double floatValue() const;
+        double doubleValue() const;
         Pin pinValue() const;
     };
 }

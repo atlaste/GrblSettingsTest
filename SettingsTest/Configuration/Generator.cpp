@@ -48,7 +48,7 @@ namespace Configuration
         add(key, tmp);
     }
 
-    void Generator::add(const char* key, Pin value)
+    void Generator::add(const char* key, const Pin& value)
     {
         if (!value.undefined())
         {
@@ -60,7 +60,7 @@ namespace Configuration
     {
         if (configurable != nullptr)
         {
-            configurable->generate(*this);
+            configurable->handle(*this);
         }
     }
 
@@ -69,4 +69,11 @@ namespace Configuration
         addStr("\n");
         indent_--;
     }
+
+    void Generator::handleDetail(const char* name, Configurable* value) {
+        enter(name);
+        value->handle(*this);
+        leave();
+    }
+
 }

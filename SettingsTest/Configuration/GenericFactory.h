@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 
+#include "HandlerBase.h"
+
 namespace Configuration {
     template <typename BaseType>
     class GenericFactory
@@ -26,11 +28,8 @@ namespace Configuration {
             BuilderBase(const BuilderBase& o) = delete;
             BuilderBase& operator=(const BuilderBase& o) = delete;
 
-            virtual BaseType* create(Configuration::Parser& parser) const = 0;
-
-            inline bool matches(const char* name) {
-                return !strcmp(name, name_);
-            }
+            virtual BaseType* create() const = 0;
+            const char* name() const { return name_; }
 
             virtual ~BuilderBase() = default;
         };
@@ -51,21 +50,28 @@ namespace Configuration {
                 instance().registerBuilder(this);
             }
 
-            BaseType* create(Configuration::Parser& parser) const override
+            BaseType* create() const override
             {
-                return new DerivedType(parser);
+                return new DerivedType();
             }
         };
 
-        static const BuilderBase* find(const char* name) {
-            for (auto it : instance().builders_)
+        static void handle(Configuration::HandlerBase& handler, BaseType*& inst)
+        {
+            if (inst == nullptr)
             {
-                if (it->matches(name))
-                {
-                    return it;
+                for (auto it : instance().builders_) {
+                    if (handler.matchesUninitialized(it->name())) {
+                        inst = it->create();
+                        inst->handle(handler);
+
+                        return;
+                    }
                 }
             }
-            return nullptr;
+            else {
+                inst->handle(handler);
+            }
         }
 
         inline static const BuilderBase* find(const std::string& name) {

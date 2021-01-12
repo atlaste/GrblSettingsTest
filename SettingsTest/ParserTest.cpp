@@ -1,5 +1,7 @@
 #include "Configuration/Parser.h"
+#include "Configuration/ParserHandler.h"
 #include "Configuration/ParseException.h"
+#include "Configuration/Configurable.h"
 
 #include "Machine.h"
 
@@ -8,31 +10,6 @@
 #include <iostream>
 #include <streambuf>
 
-/*
-void ParseBus(Parser& parser) {
-    std::cout << "Parsing bus." << std::endl;
-
-    // TODO
-}
-
-void ParseRoot(Parser& parser) {
-    std::cout << "Parsing root." << std::endl;
-
-    for (; !parser.IsEndSection(); parser.moveNext()) {
-        if (parser.is("axis")) {
-            parser.enter();
-            ParseAxis(parser);
-            parser.leave();
-        }
-        else if (parser.is("bus")) {
-            parser.enter();
-            ParseBus(parser);
-            parser.leave();
-        }
-    }
-}
-
-*/
 int main() {
     std::ifstream t("..\\SettingsTest\\Test.yaml");
     std::string   str((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
@@ -42,13 +19,19 @@ int main() {
 
     try {
         Configuration::Parser parser(begin, end);
-        
-        Machine machine(parser);
+        Configuration::ParserHandler handler(parser);
+
+        Machine machine;
+        while (parser.moveNext())
+        {
+            machine.handle(handler);
+        }
 
         std::cout << "Done parsing machine config." << std::endl;
 
         Configuration::Generator generator;
-        machine.generate(generator);
+        machine.handle(generator);
+
         std::cout << "Complete config: " << std::endl;
         std::cout << generator.str() << std::endl;
     }
@@ -62,7 +45,5 @@ int main() {
 
     std::string s;
     std::getline(std::cin, s);
-    return 0;
-
     return 0;
 }

@@ -33,6 +33,12 @@
       <Filter>Configuration</Filter>
     </ClInclude>
     <ClInclude Include="Pin.h" />
+    <ClInclude Include="Configuration\HandlerBase.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="Configuration\ParserHandler.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Configuration\Tokenizer.cpp">

@@ -105,7 +105,7 @@ namespace Configuration {
         return current_.iValue_;
     }
     
-    double Parser::floatValue() const {
+    double Parser::doubleValue() const {
         if (current_.kind_ != TokenKind::Boolean) {
             parseError("Expected a float value (e.g. 123.456)");
         }
