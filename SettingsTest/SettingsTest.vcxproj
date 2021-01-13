@@ -31,6 +31,8 @@
     <ClInclude Include="Configuration\SettingsError.h" />
     <ClInclude Include="Configuration\Tokenizer.h" />
     <ClInclude Include="Configuration\TokenKind.h" />
+    <ClInclude Include="Configuration\Validator.h" />
+    <ClInclude Include="Logging.h" />
     <ClInclude Include="Machine.h" />
     <ClInclude Include="Pin.h" />
   </ItemGroup>
@@ -38,7 +40,10 @@
     <ClCompile Include="Configuration\Generator.cpp" />
     <ClCompile Include="Configuration\Parser.cpp" />
     <ClCompile Include="Configuration\Tokenizer.cpp" />
+    <ClCompile Include="Configuration\Validator.cpp" />
+    <ClCompile Include="Logging.cpp" />
     <ClCompile Include="ParserTest.cpp" />
+    <ClCompile Include="ParserTest2.ino" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Test.yaml" />

@@ -1,7 +1,11 @@
+#ifndef ESP32
+
 #include "Configuration/Parser.h"
 #include "Configuration/ParserHandler.h"
 #include "Configuration/ParseException.h"
 #include "Configuration/Configurable.h"
+#include "Configuration/Validator.h"
+#include "Assert.h"
 
 #include "Machine.h"
 
@@ -30,11 +34,25 @@ int main() {
 
         std::cout << "Done parsing machine config." << std::endl;
 
+        try {
+            Configuration::Validator validator;
+            machine.handle(validator);
+        }
+        catch (std::exception& ex)
+        {
+            std::cout << "Validation error: " << ex.what() << std::endl;
+        }
+
+        std::cout << "Done validating machine config." << std::endl;
+
         Configuration::Generator generator;
         machine.handle(generator);
 
         std::cout << "Complete config: " << std::endl;
         std::cout << generator.str() << std::endl;
+
+        std::cout << "Done generating machine config." << std::endl;
+
     }
     catch (const Configuration::ParseException& ex) {
         std::cout << "Parse error: " << ex.What() << " @ " << ex.LineNumber() << ":" << ex.ColumnNumber() << std::endl;
@@ -48,3 +66,5 @@ int main() {
     std::getline(std::cin, s);
     return 0;
 }
+
+#endif

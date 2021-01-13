@@ -69,8 +69,9 @@ namespace Configuration {
                     }
                 }
             }
-            else {
-                inst->handle(handler);
+            else 
+            {
+                handler.handleDetail(inst->name(), inst);
             }
         }
 

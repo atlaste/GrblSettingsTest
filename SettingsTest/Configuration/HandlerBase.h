@@ -35,8 +35,6 @@ namespace Configuration
             {
                 if (value == nullptr && matchesUninitialized(name))
                 {
-                    std::cout << "Create " << typeid(T).name() << " for " << name << std::endl;
-
                     value = new T();
                     handleDetail(name, value);
                 }

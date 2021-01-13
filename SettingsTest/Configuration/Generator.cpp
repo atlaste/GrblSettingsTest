@@ -66,7 +66,12 @@ namespace Configuration
 
     void Generator::leave()
     {
-        addStr("\n");
+        if (!lastIsNewline_)
+        {
+            addStr("\n");
+            lastIsNewline_ = true;
+        }
+
         indent_--;
     }
 

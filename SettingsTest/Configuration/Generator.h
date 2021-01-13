@@ -17,8 +17,10 @@ namespace Configuration
 
         std::vector<char> config_;
         int indent_;
+        bool lastIsNewline_ = false;
 
         inline void addStr(const char* text) {
+            lastIsNewline_ = false;
             for (auto it = text; *it; ++it)
             {
                 config_.push_back(*it);

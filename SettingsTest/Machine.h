@@ -6,8 +6,6 @@
 
 #include <vector>
 
-#include <iostream>
-
 class I2SO : public Configuration::Configurable
 {
     Pin bck_;
@@ -22,9 +20,9 @@ public:
             !data_.undefined() ||
             !ws_.undefined())
         {
-            Assert(bck_.undefined(), "I2SO BCK pin should be configured once.");
-            Assert(data_.undefined(), "I2SO Data pin should be configured once.");
-            Assert(ws_.undefined(), "I2SO WS pin should be configured once.");
+            Assert(!bck_.undefined(), "I2SO BCK pin should be configured once.");
+            Assert(!data_.undefined(), "I2SO Data pin should be configured once.");
+            Assert(!ws_.undefined(), "I2SO WS pin should be configured once.");
         }
     }
 
@@ -34,12 +32,12 @@ public:
         handler.handle("ws", ws_);
     }
 
-    // const char* name() const override { return "i2so"; }
-
     ~I2SO() {}
 };
 
 class Motor : public Configuration::Configurable {
+public:
+    virtual const char* name() const = 0;
 };
 
 using MotorFactory = Configuration::GenericFactory<Motor>;
@@ -66,7 +64,7 @@ public:
         handler.handle("enable", enable_);
     }
 
-    // const char* name() const override { return "stepstick"; }
+    const char* name() const override { return "stepstick"; }
     // TODO FIXME: should be in a cpp file, and: return stepstickRegistration.name();
 };
 
@@ -89,8 +87,6 @@ public:
         handler.handle("endstop", endstop_);
         MotorFactory::handle(handler, motor_);
     }
-
-    // const char* name() const override { return "axis"; }
 
     ~Axis() {
         delete motor_;
@@ -143,8 +139,6 @@ public:
         }
     }
 
-    // const char* name() const override { return "machine"; }
-
     ~Axes() {
         for (int i = 0; i < MAX_NUMBER_AXIS; ++i)
         {
@@ -170,8 +164,6 @@ public:
         handler.handle("i2so", i2so_);
         handler.handle("axes", axes_);
     }
-
-    // const char* name() const override { return "machine"; }
 
     ~Machine() {
         delete i2so_;

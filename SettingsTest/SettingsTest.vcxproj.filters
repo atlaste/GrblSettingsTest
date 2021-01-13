@@ -42,6 +42,10 @@
     <ClInclude Include="Configuration\HandlerType.h">
       <Filter>Configuration</Filter>
     </ClInclude>
+    <ClInclude Include="Configuration\Validator.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="Logging.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Configuration\Tokenizer.cpp">
@@ -54,6 +58,11 @@
     <ClCompile Include="Configuration\Generator.cpp">
       <Filter>Configuration</Filter>
     </ClCompile>
+    <ClCompile Include="Configuration\Validator.cpp">
+      <Filter>Configuration</Filter>
+    </ClCompile>
+    <ClCompile Include="Logging.cpp" />
+    <ClCompile Include="ParserTest2.ino" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Test.yaml" />
