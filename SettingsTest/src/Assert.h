@@ -1,6 +1,14 @@
 #pragma once
 
-#include <exception>
+class AssertionFailed
+{
+    const char* message_;
+
+public:
+    AssertionFailed(const char* msg) : message_(msg) {}
+
+    const char* what() const { return message_; }
+};
 
 #undef Assert
 
@@ -10,6 +18,6 @@
     {                                                                                                                                      \
         if (!(condition)) {                                                                                                                \
             const char* ch = #condition " (@line " Stringify2(__LINE__) ")";                                                                \
-            throw std::exception(ch);                                                                              \
+            throw AssertionFailed(ch);                                                                              \
         }                                                                                                                                  \
     }

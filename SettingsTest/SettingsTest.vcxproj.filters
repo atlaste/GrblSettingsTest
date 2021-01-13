@@ -6,65 +6,67 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Configuration\Parser.h">
-      <Filter>Configuration</Filter>
-    </ClInclude>
-    <ClInclude Include="Configuration\SettingsError.h">
-      <Filter>Configuration</Filter>
-    </ClInclude>
-    <ClInclude Include="Configuration\Tokenizer.h">
-      <Filter>Configuration</Filter>
-    </ClInclude>
-    <ClInclude Include="Configuration\TokenKind.h">
-      <Filter>Configuration</Filter>
-    </ClInclude>
-    <ClInclude Include="Configuration\ParseException.h">
-      <Filter>Configuration</Filter>
-    </ClInclude>
-    <ClInclude Include="Assert.h" />
-    <ClInclude Include="Machine.h" />
-    <ClInclude Include="Configuration\GenericFactory.h">
-      <Filter>Configuration</Filter>
-    </ClInclude>
-    <ClInclude Include="Configuration\Configurable.h">
-      <Filter>Configuration</Filter>
-    </ClInclude>
-    <ClInclude Include="Configuration\Generator.h">
-      <Filter>Configuration</Filter>
-    </ClInclude>
-    <ClInclude Include="Pin.h" />
-    <ClInclude Include="Configuration\HandlerBase.h">
-      <Filter>Configuration</Filter>
-    </ClInclude>
-    <ClInclude Include="Configuration\ParserHandler.h">
-      <Filter>Configuration</Filter>
-    </ClInclude>
-    <ClInclude Include="Configuration\HandlerType.h">
-      <Filter>Configuration</Filter>
-    </ClInclude>
-    <ClInclude Include="Configuration\Validator.h">
-      <Filter>Configuration</Filter>
-    </ClInclude>
-    <ClInclude Include="Logging.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Configuration\Tokenizer.cpp">
+    <ClCompile Include="SettingsTest.ino" />
+    <ClCompile Include="src\Logging.cpp" />
+    <ClCompile Include="src\Machine.cpp" />
+    <ClCompile Include="src\ParserTest.cpp" />
+    <ClCompile Include="src\Configuration\Parser.cpp">
       <Filter>Configuration</Filter>
     </ClCompile>
-    <ClCompile Include="Configuration\Parser.cpp">
+    <ClCompile Include="src\Configuration\Tokenizer.cpp">
       <Filter>Configuration</Filter>
     </ClCompile>
-    <ClCompile Include="ParserTest.cpp" />
-    <ClCompile Include="Configuration\Generator.cpp">
+    <ClCompile Include="src\Configuration\Validator.cpp">
       <Filter>Configuration</Filter>
     </ClCompile>
-    <ClCompile Include="Configuration\Validator.cpp">
+    <ClCompile Include="src\Configuration\Generator.cpp">
       <Filter>Configuration</Filter>
     </ClCompile>
-    <ClCompile Include="Logging.cpp" />
-    <ClCompile Include="ParserTest2.ino" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Test.yaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Logging.h" />
+    <ClInclude Include="src\Machine.h" />
+    <ClInclude Include="src\Pin.h" />
+    <ClInclude Include="src\Assert.h" />
+    <ClInclude Include="src\Debug.h" />
+    <ClInclude Include="src\Configuration\ParseException.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Configuration\Parser.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Configuration\ParserHandler.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Configuration\SettingsError.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Configuration\Tokenizer.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Configuration\TokenKind.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Configuration\Validator.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Configuration\Configurable.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Configuration\Generator.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Configuration\GenericFactory.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Configuration\HandlerBase.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Configuration\HandlerType.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

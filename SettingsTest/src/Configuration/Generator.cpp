@@ -3,6 +3,7 @@
 #include "Configurable.h"
 
 #include <cstring>
+#include <cstdio>
 
 namespace Configuration
 {

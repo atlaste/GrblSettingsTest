@@ -19,34 +19,36 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Assert.h" />
-    <ClInclude Include="Configuration\Configurable.h" />
-    <ClInclude Include="Configuration\Generator.h" />
-    <ClInclude Include="Configuration\GenericFactory.h" />
-    <ClInclude Include="Configuration\HandlerBase.h" />
-    <ClInclude Include="Configuration\HandlerType.h" />
-    <ClInclude Include="Configuration\ParseException.h" />
-    <ClInclude Include="Configuration\Parser.h" />
-    <ClInclude Include="Configuration\ParserHandler.h" />
-    <ClInclude Include="Configuration\SettingsError.h" />
-    <ClInclude Include="Configuration\Tokenizer.h" />
-    <ClInclude Include="Configuration\TokenKind.h" />
-    <ClInclude Include="Configuration\Validator.h" />
-    <ClInclude Include="Logging.h" />
-    <ClInclude Include="Machine.h" />
-    <ClInclude Include="Pin.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Configuration\Generator.cpp" />
-    <ClCompile Include="Configuration\Parser.cpp" />
-    <ClCompile Include="Configuration\Tokenizer.cpp" />
-    <ClCompile Include="Configuration\Validator.cpp" />
-    <ClCompile Include="Logging.cpp" />
-    <ClCompile Include="ParserTest.cpp" />
-    <ClCompile Include="ParserTest2.ino" />
+    <ClCompile Include="SettingsTest.ino" />
+    <ClCompile Include="src\Configuration\Generator.cpp" />
+    <ClCompile Include="src\Configuration\Parser.cpp" />
+    <ClCompile Include="src\Configuration\Tokenizer.cpp" />
+    <ClCompile Include="src\Configuration\Validator.cpp" />
+    <ClCompile Include="src\Logging.cpp" />
+    <ClCompile Include="src\Machine.cpp" />
+    <ClCompile Include="src\ParserTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Test.yaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Assert.h" />
+    <ClInclude Include="src\Configuration\Configurable.h" />
+    <ClInclude Include="src\Configuration\Generator.h" />
+    <ClInclude Include="src\Configuration\GenericFactory.h" />
+    <ClInclude Include="src\Configuration\HandlerBase.h" />
+    <ClInclude Include="src\Configuration\HandlerType.h" />
+    <ClInclude Include="src\Configuration\ParseException.h" />
+    <ClInclude Include="src\Configuration\Parser.h" />
+    <ClInclude Include="src\Configuration\ParserHandler.h" />
+    <ClInclude Include="src\Configuration\SettingsError.h" />
+    <ClInclude Include="src\Configuration\Tokenizer.h" />
+    <ClInclude Include="src\Configuration\TokenKind.h" />
+    <ClInclude Include="src\Configuration\Validator.h" />
+    <ClInclude Include="src\Debug.h" />
+    <ClInclude Include="src\Logging.h" />
+    <ClInclude Include="src\Machine.h" />
+    <ClInclude Include="src\Pin.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

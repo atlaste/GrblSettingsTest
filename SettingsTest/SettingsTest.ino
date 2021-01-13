@@ -1,11 +1,11 @@
-#include "Configuration/Parser.h"
-#include "Configuration/ParserHandler.h"
-#include "Configuration/ParseException.h"
-#include "Configuration/Configurable.h"
-#include "Configuration/Validator.h"
-#include "Assert.h"
+#include "src/Configuration/Parser.h"
+#include "src/Configuration/ParserHandler.h"
+#include "src/Configuration/ParseException.h"
+#include "src/Configuration/Configurable.h"
+#include "src/Configuration/Validator.h"
+#include "src/Assert.h"
 
-#include "Machine.h"
+#include "src/Machine.h"
 
 
 void setup() {
@@ -46,7 +46,7 @@ void setup() {
     catch (const std::exception& ex) {
         // std::cout << "Parse error: " << ex.what() << std::endl;
     }
-    catch (...) { 
+    catch (...) {
         // std::cout << "Uncaught exception" << std::endl; 
     }
 }
