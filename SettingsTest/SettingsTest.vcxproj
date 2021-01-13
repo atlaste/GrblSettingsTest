@@ -22,6 +22,7 @@
     <ClCompile Include="SettingsTest.ino" />
     <ClCompile Include="src\Configuration\Generator.cpp" />
     <ClCompile Include="src\Configuration\Parser.cpp" />
+    <ClCompile Include="src\Configuration\RuntimeSetting.cpp" />
     <ClCompile Include="src\Configuration\Tokenizer.cpp" />
     <ClCompile Include="src\Configuration\Validator.cpp" />
     <ClCompile Include="src\Logging.cpp" />
@@ -41,6 +42,7 @@
     <ClInclude Include="src\Configuration\ParseException.h" />
     <ClInclude Include="src\Configuration\Parser.h" />
     <ClInclude Include="src\Configuration\ParserHandler.h" />
+    <ClInclude Include="src\Configuration\RuntimeSetting.h" />
     <ClInclude Include="src\Configuration\SettingsError.h" />
     <ClInclude Include="src\Configuration\Tokenizer.h" />
     <ClInclude Include="src\Configuration\TokenKind.h" />

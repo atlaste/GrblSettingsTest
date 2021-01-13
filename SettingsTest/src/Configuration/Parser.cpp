@@ -1,6 +1,7 @@
 #include "Parser.h"
 
 #include "ParseException.h"
+
 #include <climits>
 
 namespace Configuration {

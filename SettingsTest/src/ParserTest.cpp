@@ -4,6 +4,7 @@
 #include "Configuration/ParserHandler.h"
 #include "Configuration/ParseException.h"
 #include "Configuration/Configurable.h"
+#include "Configuration/RuntimeSetting.h"
 #include "Configuration/Validator.h"
 #include "Assert.h"
 
@@ -45,13 +46,40 @@ int main() {
 
         std::cout << "Done validating machine config." << std::endl;
 
-        Configuration::Generator generator;
-        machine.handle(generator);
+        {
+            Configuration::Generator generator;
+            machine.handle(generator);
 
-        std::cout << "Complete config: " << std::endl;
-        std::cout << generator.str() << std::endl;
+            std::cout << "Complete config: " << std::endl;
+            std::cout << generator.str() << std::endl;
 
-        std::cout << "Done generating machine config." << std::endl;
+            std::cout << "Done generating machine config." << std::endl;
+        }
+
+        while (true)
+        {
+            std::string s;
+            std::getline(std::cin, s);
+            if (!s.size())
+            {
+                break;
+            }
+
+            if (s[0] == '$')
+            {
+                {
+                    Configuration::RuntimeSetting setting(s.c_str());
+                    machine.handle(setting);
+                }
+                {
+                    Configuration::Generator generator;
+                    machine.handle(generator);
+
+                    std::cout << "Complete config: " << std::endl;
+                    std::cout << generator.str() << std::endl;
+                }
+            }
+        }
 
     }
     catch (const Configuration::ParseException& ex) {
@@ -62,8 +90,8 @@ int main() {
     }
     catch (...) { std::cout << "Uncaught exception" << std::endl; }
 
-    std::string s;
-    std::getline(std::cin, s);
+    // std::string s;
+    // std::getline(std::cin, s);
     return 0;
 }
 

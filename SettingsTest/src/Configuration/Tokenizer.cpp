@@ -1,6 +1,7 @@
 #include "Tokenizer.h"
 
 #include "ParseException.h"
+
 #include <cstdlib>
 
 namespace Configuration {

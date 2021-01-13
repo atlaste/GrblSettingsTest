@@ -50,6 +50,5 @@ namespace Configuration
         }
 
         HandlerType handlerType() override { return HandlerType::Parser; }
-
     };
 }

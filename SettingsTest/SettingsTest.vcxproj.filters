@@ -22,6 +22,7 @@
     <ClCompile Include="src\Configuration\Generator.cpp">
       <Filter>Configuration</Filter>
     </ClCompile>
+    <ClCompile Include="src\Configuration\RuntimeSetting.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Test.yaml" />
@@ -66,6 +67,9 @@
       <Filter>Configuration</Filter>
     </ClInclude>
     <ClInclude Include="src\Configuration\HandlerType.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Configuration\RuntimeSetting.h">
       <Filter>Configuration</Filter>
     </ClInclude>
   </ItemGroup>
