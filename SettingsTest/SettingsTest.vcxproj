@@ -30,7 +30,6 @@
     <ClCompile Include="src\Machine.cpp" />
     <ClCompile Include="src\ParserTest.cpp" />
     <ClCompile Include="src\SimpleStream.cpp" />
-    <ClCompile Include="src\StringStream.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Test.yaml" />
@@ -52,7 +51,6 @@
     <ClInclude Include="src\Configuration\Tokenizer.h" />
     <ClInclude Include="src\Configuration\TokenKind.h" />
     <ClInclude Include="src\Configuration\Validator.h" />
-    <ClInclude Include="src\Debug.h" />
     <ClInclude Include="src\Logging.h" />
     <ClInclude Include="src\Machine.h" />
     <ClInclude Include="src\Pin.h" />

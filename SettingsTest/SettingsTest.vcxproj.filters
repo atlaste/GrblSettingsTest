@@ -27,7 +27,6 @@
       <Filter>Configuration</Filter>
     </ClCompile>
     <ClCompile Include="src\SimpleStream.cpp" />
-    <ClCompile Include="src\StringStream.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Test.yaml" />
@@ -37,7 +36,6 @@
     <ClInclude Include="src\Machine.h" />
     <ClInclude Include="src\Pin.h" />
     <ClInclude Include="src\Assert.h" />
-    <ClInclude Include="src\Debug.h" />
     <ClInclude Include="src\Configuration\ParseException.h">
       <Filter>Configuration</Filter>
     </ClInclude>

@@ -30,7 +30,7 @@ void setup() {
         }
         catch (std::exception& ex)
         {
-            error("Validation error: %s", ex.what());
+            error("Validation error: " << ex.what());
         }
 
         StringStream ss;
@@ -39,7 +39,7 @@ void setup() {
         machine.handle(generator);
 
         auto str = ss.str();
-        debug("%s", str.str().c_str());
+        debug(str);
     }
     catch (const Configuration::ParseException& ex) {
         // std::cout << "Parse error: " << ex.What() << " @ " << ex.LineNumber() << ":" << ex.ColumnNumber() << std::endl;

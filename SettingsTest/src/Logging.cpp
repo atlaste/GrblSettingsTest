@@ -4,6 +4,8 @@
 #include <cstdarg>
 #include <cassert>
 
+/*
+
 #ifdef ESP32
 
 // #include <Arduino.h>
@@ -63,3 +65,4 @@ void error(const char* fmt, ...)
 
     print(buffer);
 }
+*/

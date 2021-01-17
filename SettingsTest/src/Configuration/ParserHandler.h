@@ -4,7 +4,7 @@
 #include "Parser.h"
 #include "Configurable.h"
 
-#include "../Debug.h"
+#include "../Logging.h"
 
 namespace Configuration
 {
@@ -16,7 +16,7 @@ namespace Configuration
     protected:
         void handleDetail(const char* name, Configuration::Configurable* value) override {
             if (value != nullptr && parser_.is(name)) {
-                debug("Parsing configurable %s", name);
+                debug("Parsing configurable " << name);
 
                 parser_.enter();
                 for (; !parser_.isEndSection(); parser_.moveNext()) {

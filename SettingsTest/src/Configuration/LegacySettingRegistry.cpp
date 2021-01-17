@@ -33,7 +33,7 @@ namespace Configuration
                 handleLegacy(value, str);
             }
             else {
-                warn("Incorrect setting '%d': cannot find '='.", start);
+                warn("Incorrect setting '" << start << "': cannot find '='.");
             }
             return true;
         }
@@ -50,6 +50,6 @@ namespace Configuration
             }
         }
 
-        warn("Cannot find handler for $%d", index);
+        warn("Cannot find handler for $" << index << ".");
     }
 }
