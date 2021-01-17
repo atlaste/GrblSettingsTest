@@ -1,68 +1,29 @@
 #include "Logging.h"
 
-#include <cstdio>
-#include <cstdarg>
-#include <cassert>
+#ifndef ESP32
 
-/*
+#include <iostream>
 
-#ifdef ESP32
-
-// #include <Arduino.h>
-
-void print(const char* msg ) {
-    //Serial.println(msg);
+DebugStream::DebugStream(const char* name) {
+    std::cout << '[' << name << ": ";
 }
+void DebugStream::add(char c)
+{
+    std::cout << c;
+}
+
+DebugStream::~DebugStream() { std::cout << ']' << std::endl; }
 
 #else
 
-void print(const char* msg) {
-    printf("%s\n", msg);
+DebugStream::DebugStream(const char* name) {
+    Serial.print("[");
+    Serial.print(name);
+    Serial.print(": ");
 }
+
+void DebugStream::add(char c) { Serial.print(c); }
+
+DebugStream::~DebugStream() { Serial.println("]"); }
 
 #endif
-
-void debug(const char* fmt, ...)
-{
-    char buffer[256];
-    va_list args;
-    va_start(args, fmt);
-    vsnprintf(buffer, 256, fmt, args);
-    va_end(args);
-
-    print(buffer);
-}
-
-void info(const char* fmt, ...)
-{
-    char buffer[256];
-    va_list args;
-    va_start(args, fmt);
-    vsnprintf(buffer, 256, fmt, args);
-    va_end(args);
-
-    print(buffer);
-}
-
-void warn(const char* fmt, ...)
-{
-    char buffer[256];
-    va_list args;
-    va_start(args, fmt);
-    vsnprintf(buffer, 256, fmt, args);
-    va_end(args);
-
-    print(buffer);
-}
-
-void error(const char* fmt, ...)
-{
-    char buffer[256];
-    va_list args;
-    va_start(args, fmt);
-    vsnprintf(buffer, 256, fmt, args);
-    va_end(args);
-
-    print(buffer);
-}
-*/

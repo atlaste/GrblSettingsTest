@@ -13,4 +13,6 @@ public:
     inline bool undefined() const { return str_.empty(); }
 
     const char* str() const { return str_.c_str(); }
+
+    ~Pin() {}
 };
