@@ -5,6 +5,7 @@
 #include "Configuration/ParseException.h"
 #include "Configuration/Configurable.h"
 #include "Configuration/RuntimeSetting.h"
+#include "Configuration/LegacySettingRegistry.h"
 #include "Configuration/Validator.h"
 #include "Assert.h"
 
@@ -67,10 +68,14 @@ int main() {
 
             if (s[0] == '$')
             {
+                // Try legacy handling first, then runtime setting handling:
+                if (!Configuration::LegacySettingRegistry::tryHandleLegacy(s.c_str()))
                 {
                     Configuration::RuntimeSetting setting(s.c_str());
                     machine.handle(setting);
                 }
+
+                // Done. Regenerate config:
                 {
                     Configuration::Generator generator;
                     machine.handle(generator);

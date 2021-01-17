@@ -23,6 +23,9 @@
       <Filter>Configuration</Filter>
     </ClCompile>
     <ClCompile Include="src\Configuration\RuntimeSetting.cpp" />
+    <ClCompile Include="src\Configuration\LegacySettingRegistry.cpp">
+      <Filter>Configuration</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Test.yaml" />
@@ -70,6 +73,12 @@
       <Filter>Configuration</Filter>
     </ClInclude>
     <ClInclude Include="src\Configuration\RuntimeSetting.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Configuration\LegacySettingRegistry.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Configuration\LegacySettingHandler.h">
       <Filter>Configuration</Filter>
     </ClInclude>
   </ItemGroup>
