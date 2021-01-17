@@ -1,8 +1,8 @@
 #pragma once
 
-#include "SimpleStream.h"
+#include "SimpleOutputStream.h"
 
-class DebugStream : public SimpleStream
+class DebugStream : public SimpleOutputStream
 {
 public:
     DebugStream(const char* name);

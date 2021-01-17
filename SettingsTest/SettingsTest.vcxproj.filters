@@ -4,12 +4,13 @@
     <Filter Include="Configuration">
       <UniqueIdentifier>{98728e35-81d0-48f3-9e33-2da7e6a03bc6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="test">
+      <UniqueIdentifier>{a7bb1a62-21f0-422b-8de0-4e8f73e579e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SettingsTest.ino" />
     <ClCompile Include="src\Logging.cpp" />
     <ClCompile Include="src\Machine.cpp" />
-    <ClCompile Include="src\ParserTest.cpp" />
     <ClCompile Include="src\Configuration\Parser.cpp">
       <Filter>Configuration</Filter>
     </ClCompile>
@@ -26,7 +27,13 @@
     <ClCompile Include="src\Configuration\LegacySettingRegistry.cpp">
       <Filter>Configuration</Filter>
     </ClCompile>
-    <ClCompile Include="src\SimpleStream.cpp" />
+    <ClCompile Include="SettingsTest.ino">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ParserTest.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SimpleOutputStream.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Test.yaml" />
@@ -82,7 +89,7 @@
       <Filter>Configuration</Filter>
     </ClInclude>
     <ClInclude Include="src\StringRange.h" />
-    <ClInclude Include="src\SimpleStream.h" />
     <ClInclude Include="src\StringStream.h" />
+    <ClInclude Include="src\SimpleOutputStream.h" />
   </ItemGroup>
 </Project>

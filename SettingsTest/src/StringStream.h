@@ -1,11 +1,11 @@
 #pragma once
 
-#include "SimpleStream.h"
+#include "SimpleOutputStream.h"
 #include "StringRange.h"
 
 #include <vector>
 
-class StringStream : public SimpleStream
+class StringStream : public SimpleOutputStream
 {
     std::vector<char> data_;
 

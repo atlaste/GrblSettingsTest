@@ -1,8 +1,8 @@
-#include "SimpleStream.h"
+#include "SimpleOutputStream.h"
 
 #include <cstring>
 
-char* SimpleStream::intToBuf(int value, char* dst)
+char* SimpleOutputStream::intToBuf(int value, char* dst)
 {
 #ifdef ESP32
     return itoa(value, dst, 10);
@@ -12,17 +12,17 @@ char* SimpleStream::intToBuf(int value, char* dst)
 #endif
 }
 
-void SimpleStream::add(const char* s) {
+void SimpleOutputStream::add(const char* s) {
     for (; *s; ++s) { add(*s); }
 }
 
-void SimpleStream::add(int value) {
+void SimpleOutputStream::add(int value) {
     char buf[10];
     intToBuf(value, buf);
     add(buf);
 }
 
-void SimpleStream::add(double value, int numberDigits, int precision)
+void SimpleOutputStream::add(double value, int numberDigits, int precision)
 {
     if (isnan(value)) {
         add("NaN");
@@ -44,12 +44,12 @@ void SimpleStream::add(double value, int numberDigits, int precision)
     add(buf);
 }
 
-void SimpleStream::add(StringRange range)
+void SimpleOutputStream::add(StringRange range)
 {
     for (auto ch : range) { add(ch); }
 }
 
-void SimpleStream::add(const Pin& pin)
+void SimpleOutputStream::add(const Pin& pin)
 {
     add(pin.str());
 }

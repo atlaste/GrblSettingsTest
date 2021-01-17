@@ -16,7 +16,7 @@ namespace Configuration
         Generator(const Generator&) = delete;
         Generator& operator=(const Generator&) = delete;
 
-        SimpleStream& dst_;
+        SimpleOutputStream& dst_;
         int indent_;
         bool lastIsNewline_ = false;
 
@@ -38,7 +38,7 @@ namespace Configuration
         HandlerType handlerType() override { return HandlerType::Generator; }
 
     public:
-        Generator(SimpleStream& dst) : indent_(0), dst_(dst) {}
+        Generator(SimpleOutputStream& dst) : indent_(0), dst_(dst) {}
 
         void handle(const char* name, int& value) override {
             indent();

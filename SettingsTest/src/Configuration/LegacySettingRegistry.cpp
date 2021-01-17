@@ -43,13 +43,17 @@ namespace Configuration
     }
 
     void LegacySettingRegistry::handleLegacy(int index, const char* value) {
+        bool handled = false;
         for (auto it : instance().handlers_) {
             if (it->index() == index)
             {
-                return it->handle(value);
+                handled = true;
+                it->handle(value);
             }
         }
 
-        warn("Cannot find handler for $" << index << ".");
+        if (!handled) {
+            warn("Cannot find handler for $" << index << ". Setting was ignored.");
+        }
     }
 }
