@@ -29,6 +29,8 @@
     <ClCompile Include="src\Logging.cpp" />
     <ClCompile Include="src\Machine.cpp" />
     <ClCompile Include="src\ParserTest.cpp" />
+    <ClCompile Include="src\SimpleStream.cpp" />
+    <ClCompile Include="src\StringStream.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Test.yaml" />
@@ -54,7 +56,9 @@
     <ClInclude Include="src\Logging.h" />
     <ClInclude Include="src\Machine.h" />
     <ClInclude Include="src\Pin.h" />
+    <ClInclude Include="src\SimpleStream.h" />
     <ClInclude Include="src\StringRange.h" />
+    <ClInclude Include="src\StringStream.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

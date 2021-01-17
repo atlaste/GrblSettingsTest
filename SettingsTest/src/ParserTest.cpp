@@ -47,11 +47,13 @@ int main() {
         std::cout << "Done validating machine config." << std::endl;
 
         {
-            Configuration::Generator generator;
+            StringStream ss;
+            
+            Configuration::Generator generator(ss);
             machine.handle(generator);
 
             std::cout << "Complete config: " << std::endl;
-            std::cout << generator.str().str() << std::endl;
+            std::cout << ss.str().str() << std::endl;
 
             std::cout << "Done generating machine config." << std::endl;
         }
@@ -76,11 +78,13 @@ int main() {
 
                 // Done. Regenerate config:
                 {
-                    Configuration::Generator generator;
+                    StringStream ss;
+
+                    Configuration::Generator generator(ss);
                     machine.handle(generator);
 
                     std::cout << "Complete config: " << std::endl;
-                    std::cout << generator.str().str() << std::endl;
+                    std::cout << ss.str().str() << std::endl;
                 }
             }
         }

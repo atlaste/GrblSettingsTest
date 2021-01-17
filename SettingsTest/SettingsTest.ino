@@ -33,10 +33,12 @@ void setup() {
             error("Validation error: %s", ex.what());
         }
 
-        Configuration::Generator generator;
+        StringStream ss;
+
+        Configuration::Generator generator(ss);
         machine.handle(generator);
 
-        auto str = generator.str();
+        auto str = ss.str();
         debug("%s", str.str().c_str());
     }
     catch (const Configuration::ParseException& ex) {

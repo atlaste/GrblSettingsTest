@@ -10,51 +10,8 @@ namespace Configuration
     void Generator::enter(const char* name)
     {
         indent();
-        addStr(name);
-        addStr(":\n");
+        dst_ << name << ":\n";
         indent_++;
-    }
-
-    void Generator::add(const char* key, StringRange value)
-    {
-        indent();
-        addStr(key);
-        addStr(": ");
-        addStr(value);
-        addStr("\n");
-    }
-
-    void Generator::add(const char* key, const char* value)
-    {
-        add(key, StringRange(value));
-    }
-
-    void Generator::add(const char* key, bool value)
-    {
-        if (value) { add(key, "true"); } 
-        else { add(key, "false"); }
-    }
-
-    void Generator::add(const char* key, int value)
-    {
-        char tmp[11];
-        snprintf(tmp, 11, "%d", value);
-        add(key, tmp);
-    }
-
-    void Generator::add(const char* key, double value)
-    {
-        char tmp[20];
-        snprintf(tmp, 20, "%f", value);
-        add(key, tmp);
-    }
-
-    void Generator::add(const char* key, const Pin& value)
-    {
-        if (!value.undefined())
-        {
-            add(key, value.str());
-        }
     }
 
     void Generator::add(Configuration::Configurable* configurable)
@@ -69,7 +26,7 @@ namespace Configuration
     {
         if (!lastIsNewline_)
         {
-            addStr("\n");
+            dst_ << '\n';
             lastIsNewline_ = true;
         }
 

@@ -3,8 +3,9 @@
 #include <vector>
 
 #include "../Pin.h"
-#include "HandlerBase.h"
 #include "../StringRange.h"
+#include "../StringStream.h"
+#include "HandlerBase.h"
 
 namespace Configuration
 {
@@ -15,40 +16,19 @@ namespace Configuration
         Generator(const Generator&) = delete;
         Generator& operator=(const Generator&) = delete;
 
-        std::vector<char> config_;
+        SimpleStream& dst_;
         int indent_;
         bool lastIsNewline_ = false;
 
-        inline void addStr(const char* text) {
-            lastIsNewline_ = false;
-            for (auto it = text; *it; ++it)
-            {
-                config_.push_back(*it);
-            }
-        }
-
-        inline void addStr(StringRange text)
-        {
-            lastIsNewline_ = false;
-            for (auto it : text) {
-                config_.push_back(it);
-            }
-        }
-
         inline void indent() {
+            lastIsNewline_ = false;
             for (int i = 0; i < indent_ * 2; ++i)
             {
-                config_.push_back(' ');
+                dst_ << ' ';
             }
         }
 
         void enter(const char* name);
-        void add(const char* key, StringRange value);
-        void add(const char* key, const char* value);
-        void add(const char* key, bool value);
-        void add(const char* key, int value);
-        void add(const char* key, double value);
-        void add(const char* key, const Pin& value);
         void add(Configuration::Configurable* configurable);
         void leave();
         
@@ -58,26 +38,26 @@ namespace Configuration
         HandlerType handlerType() override { return HandlerType::Generator; }
 
     public:
-        Generator() : indent_(0) {}
+        Generator(SimpleStream& dst) : indent_(0), dst_(dst) {}
 
         void handle(const char* name, int& value) override {
-            add(name, value);
+            indent();
+            dst_ << name << ": " << value << '\n';
         }
 
         void handle(const char* name, double& value) override {
-            add(name, value);
+            indent();
+            dst_ << name << ": " << value << '\n';
         }
 
         void handle(const char* name, StringRange value) override {
-            add(name, value);
+            indent();
+            dst_ << name << ": " << value << '\n';
         }
 
         void handle(const char* name, Pin& value) override {
-            add(name, value);
-        }
-
-        inline StringRange str() const {
-            return StringRange(config_.data(), config_.data() + config_.size());
+            indent();
+            dst_ << name << ": " << value << '\n';
         }
     };
 }

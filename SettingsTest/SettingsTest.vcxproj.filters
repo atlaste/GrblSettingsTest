@@ -26,6 +26,8 @@
     <ClCompile Include="src\Configuration\LegacySettingRegistry.cpp">
       <Filter>Configuration</Filter>
     </ClCompile>
+    <ClCompile Include="src\SimpleStream.cpp" />
+    <ClCompile Include="src\StringStream.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Test.yaml" />
@@ -82,5 +84,7 @@
       <Filter>Configuration</Filter>
     </ClInclude>
     <ClInclude Include="src\StringRange.h" />
+    <ClInclude Include="src\SimpleStream.h" />
+    <ClInclude Include="src\StringStream.h" />
   </ItemGroup>
 </Project>
