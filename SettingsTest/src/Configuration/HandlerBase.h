@@ -1,9 +1,8 @@
 #pragma once
 
-#include <string>
-
 #include "HandlerType.h"
 #include "../Pin.h"
+#include "../StringRange.h"
 
 namespace Configuration
 {
@@ -24,7 +23,7 @@ namespace Configuration
     public:
         virtual void handle(const char* name, int& value) = 0;
         virtual void handle(const char* name, double& value) = 0;
-        virtual void handle(const char* name, std::string& value) = 0;
+        virtual void handle(const char* name, StringRange value) = 0;
         virtual void handle(const char* name, Pin& value) = 0;
 
         virtual HandlerType handlerType() = 0;

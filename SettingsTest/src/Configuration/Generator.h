@@ -1,10 +1,10 @@
 #pragma once
 
-#include <string>
 #include <vector>
 
 #include "../Pin.h"
 #include "HandlerBase.h"
+#include "../StringRange.h"
 
 namespace Configuration
 {
@@ -27,6 +27,14 @@ namespace Configuration
             }
         }
 
+        inline void addStr(StringRange text)
+        {
+            lastIsNewline_ = false;
+            for (auto it : text) {
+                config_.push_back(it);
+            }
+        }
+
         inline void indent() {
             for (int i = 0; i < indent_ * 2; ++i)
             {
@@ -35,7 +43,7 @@ namespace Configuration
         }
 
         void enter(const char* name);
-        void add(const char* key, const std::string& value);
+        void add(const char* key, StringRange value);
         void add(const char* key, const char* value);
         void add(const char* key, bool value);
         void add(const char* key, int value);
@@ -43,15 +51,14 @@ namespace Configuration
         void add(const char* key, const Pin& value);
         void add(Configuration::Configurable* configurable);
         void leave();
-
-
+        
     protected:
         void handleDetail(const char* name, Configurable* value) override;
         bool matchesUninitialized(const char* name) override { return false; }
         HandlerType handlerType() override { return HandlerType::Generator; }
 
     public:
-        Generator() = default;
+        Generator() : indent_(0) {}
 
         void handle(const char* name, int& value) override {
             add(name, value);
@@ -61,7 +68,7 @@ namespace Configuration
             add(name, value);
         }
 
-        void handle(const char* name, std::string& value) override {
+        void handle(const char* name, StringRange value) override {
             add(name, value);
         }
 
@@ -69,8 +76,8 @@ namespace Configuration
             add(name, value);
         }
 
-        inline std::string str() const {
-            return std::string(config_.begin(), config_.end());
+        inline StringRange str() const {
+            return StringRange(config_.data(), config_.data() + config_.size());
         }
     };
 }

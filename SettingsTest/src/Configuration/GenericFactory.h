@@ -1,6 +1,5 @@
 #pragma once
 
-#include <string>
 #include <vector>
 
 #include "HandlerBase.h"
@@ -73,10 +72,6 @@ namespace Configuration {
             {
                 handler.handleDetail(inst->name(), inst);
             }
-        }
-
-        inline static const BuilderBase* find(const std::string& name) {
-            return find(name.c_str());
         }
     };
 }

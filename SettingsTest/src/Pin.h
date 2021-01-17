@@ -1,13 +1,14 @@
 #pragma once
 
+#include "StringRange.h"
 #include <string>
 
 class Pin {
-    std::string str_;
+    std::string str_;  // stub
 
 public:
     Pin() {}
-    Pin(const std::string& str) : str_(str) {}
+    Pin(StringRange str) : str_(str.begin(), str.end()) {} // stub
 
     inline bool undefined() const { return str_.empty(); }
 

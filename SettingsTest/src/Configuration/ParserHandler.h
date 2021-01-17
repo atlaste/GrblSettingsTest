@@ -41,7 +41,7 @@ namespace Configuration
             if (parser_.is(name)) { value = parser_.doubleValue(); }
         }
 
-        void handle(const char* name, std::string& value) override {
+        void handle(const char* name, StringRange value) override {
             if (parser_.is(name)) { value = parser_.stringValue(); }
         }
 

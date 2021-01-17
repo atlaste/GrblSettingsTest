@@ -86,11 +86,11 @@ namespace Configuration {
         }
     }
 
-    std::string Parser::stringValue() const {
+    StringRange Parser::stringValue() const {
         if (current_.kind_ != TokenKind::String) {
             parseError("Expected a string value (e.g. 'foo')");
         }
-        return std::string(current_.sValueStart_, current_.sValueEnd_);
+        return StringRange(current_.sValueStart_, current_.sValueEnd_);
     }
     
     bool Parser::boolValue() const {
@@ -119,7 +119,7 @@ namespace Configuration {
         if (current_.kind_ != TokenKind::String) {
             parseError("Expected a string value (e.g. 'foo')");
         }
-        return Pin(std::string(current_.sValueStart_, current_.sValueEnd_));
+        return Pin(StringRange(current_.sValueStart_, current_.sValueEnd_));
     }
 
 }

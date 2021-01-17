@@ -18,19 +18,18 @@
 
 int main() {
     std::ifstream t("..\\SettingsTest\\Test.yaml");
-    std::string   str((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
+    std::string   ts((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
 
-    const auto begin = str.c_str();
-    const auto end = begin + str.size();
+    auto input = StringRange(ts.data(), ts.data() + ts.size());
 
     try {
-        Configuration::Parser parser(begin, end);
+        Configuration::Parser parser(input.begin(), input.end());
         Configuration::ParserHandler handler(parser);
 
         Machine machine;
         for (; !parser.isEndSection(); parser.moveNext())
         {
-            std::cout << "Parsing key " << parser.key() << std::endl;
+            std::cout << "Parsing key " << parser.key().str() << std::endl;
             machine.handle(handler);
         }
 
@@ -52,7 +51,7 @@ int main() {
             machine.handle(generator);
 
             std::cout << "Complete config: " << std::endl;
-            std::cout << generator.str() << std::endl;
+            std::cout << generator.str().str() << std::endl;
 
             std::cout << "Done generating machine config." << std::endl;
         }
@@ -81,7 +80,7 @@ int main() {
                     machine.handle(generator);
 
                     std::cout << "Complete config: " << std::endl;
-                    std::cout << generator.str() << std::endl;
+                    std::cout << generator.str().str() << std::endl;
                 }
             }
         }

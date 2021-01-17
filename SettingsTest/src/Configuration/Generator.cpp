@@ -15,18 +15,18 @@ namespace Configuration
         indent_++;
     }
 
-    void Generator::add(const char* key, const std::string& value)
-    {
-        add(key, value.c_str());
-    }
-
-    void Generator::add(const char* key, const char* value)
+    void Generator::add(const char* key, StringRange value)
     {
         indent();
         addStr(key);
         addStr(": ");
         addStr(value);
         addStr("\n");
+    }
+
+    void Generator::add(const char* key, const char* value)
+    {
+        add(key, StringRange(value));
     }
 
     void Generator::add(const char* key, bool value)

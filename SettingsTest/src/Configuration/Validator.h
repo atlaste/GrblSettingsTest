@@ -1,6 +1,5 @@
 #pragma once
 
-#include <string>
 #include <vector>
 
 #include "../Pin.h"
@@ -25,7 +24,7 @@ namespace Configuration
 
         void handle(const char* name, int& value) override { }
         void handle(const char* name, double& value) override { }
-        void handle(const char* name, std::string& value) override { }
+        void handle(const char* name, StringRange value) override { }
         void handle(const char* name, Pin& value) override { }
     };
 }

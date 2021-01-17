@@ -37,8 +37,7 @@ void setup() {
         machine.handle(generator);
 
         auto str = generator.str();
-        debug("%s", str.c_str());
-
+        debug("%s", str.str().c_str());
     }
     catch (const Configuration::ParseException& ex) {
         // std::cout << "Parse error: " << ex.What() << " @ " << ex.LineNumber() << ":" << ex.ColumnNumber() << std::endl;

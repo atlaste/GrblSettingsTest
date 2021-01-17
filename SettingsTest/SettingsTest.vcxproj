@@ -54,6 +54,7 @@
     <ClInclude Include="src\Logging.h" />
     <ClInclude Include="src\Machine.h" />
     <ClInclude Include="src\Pin.h" />
+    <ClInclude Include="src\StringRange.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
